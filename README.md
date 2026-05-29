@@ -1,3 +1,5 @@
+Supports Diamond Open Access metadata exchange
+and DDH-compatible JMEF export for OJS 3.5.
 # JMEF Plugin for OJS 3.5
 
 Journal Metadata Exchange Format (JMEF) export plugin for Open Journal Systems 3.5.
