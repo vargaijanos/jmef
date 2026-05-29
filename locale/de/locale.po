@@ -1,0 +1,109 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Varga István <vargawebkiado@gmail.com>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+msgid "plugins.generic.jmef.displayName"
+msgstr "JMEF-XML-Generator"
+
+msgid "plugins.generic.jmef.description"
+msgstr "Das Plugin erweitert die grundlegenden Metadaten der Zeitschrift, um die Erstellung von XML im Journal Metadata Exchange Format (JMEF) zu ermöglichen. Die Metadaten können nach der Aktivierung des Plugins in den Plugin-Einstellungen eingegeben werden. Die generierte XML-Adresse lautet [URL der Zeitschrift]/jmef (z. B. https://ojs.yourjournal.com/jmef)"
+
+msgid "plugins.generic.jmef.manager.settings.journalDoi"
+msgstr "DOI der Zeitschrift"
+
+msgid "plugins.generic.jmef.manager.settings.journalDoi.description"
+msgstr "Geben Sie die DOI der Zeitschrift im Format 10.xxxx/xxxx ein (z. B. 10.1234/abcdefgh)"
+
+msgid "plugins.generic.jmef.manager.settings.journalDdh"
+msgstr "DDH-ID der Zeitschrift"
+
+msgid "plugins.generic.jmef.manager.settings.journalDdh.description"
+msgstr "Falls die Zeitschrift in DDH enthalten ist, geben Sie bitte die DDH-ID-Nummer ein."
+
+msgid "plugins.generic.jmef.manager.settings.journalDoaj"
+msgstr "DOAJ-ID der Zeitschrift"
+
+msgid "plugins.generic.jmef.manager.settings.journalDoaj.description"
+msgstr "Falls die Zeitschrift im DOAJ gelistet ist, geben Sie bitte die DOAJ-ID-Nummer ein."
+
+msgid "plugins.generic.jmef.manager.settings.publisherLocation"
+msgstr "Standort des Verlags"
+
+msgid "plugins.generic.jmef.manager.settings.publisherName"
+msgstr "Sie haben diesen Herausgebernamen in den Einstellungen eingegeben: <strong>{$publisherName}</strong>"
+
+msgid "plugins.generic.jmef.manager.settings.publisherLocation.description"
+msgstr "Wählen Sie das Land aus, in dem der Verlag seinen Sitz hat."
+
+msgid "plugins.generic.jmef.manager.settings.keywords"
+msgstr "Schlagwörter der Zeitschrift"
+
+msgid "plugins.generic.jmef.manager.settings.keywords.description"
+msgstr "Geben Sie Stichwörter ein, die Ihre Zeitschrift beschreiben, <strong>getrennt durch ;</strong>"
+
+msgid "plugins.generic.jmef.manager.settings.peerReviewUsed"
+msgstr "Überprüfen Sie, ob Sie ein Peer-Review-Verfahren anwenden."
+
+msgid "plugins.generic.jmef.manager.settings.openAuthorship"
+msgstr "Überprüfen Sie, ob Sie eine offene Autorenpolitik verfolgen.<br /><em>(Der von DDH definierte Text zur Selbstauskunft bezüglich der Offenheit für alle Autoren erscheint am Ende der <strong>„Über</strong> uns“-Seite.)</em>"
+
+msgid "plugins.generic.jmef.manager.settings.journalPolicy"
+msgstr "Redaktionsrichtlinien"
+
+msgid "plugins.generic.jmef.manager.settings.diamondCategory"
+msgstr "Diamantkategorien"
+
+msgid "plugins.generic.jmef.manager.settings.additionalMetadata"
+msgstr "Zusätzliche Metadaten zur Zeitschrift"
+
+msgid "plugins.generic.jmef.manager.settings.otherOrganisations"
+msgstr "Andere Organisationen"
+
+msgid "plugins.generic.jmef.manager.settings.otherOrganisations.description"
+msgstr "Der Eigentümer der Zeitschrift, sofern dieser nicht mit dem Verlag identisch ist, oder andere mit der Zeitschrift verbundene Organisationen, <strong>getrennt durch ein Semikolon;</strong>"
+
+msgid "plugins.generic.jmef.manager.settings.oecdClassification"
+msgstr "OECD-Klassifikation 2007"
+
+msgid "plugins.generic.jmef.manager.settings.oecdClassification.description"
+msgstr "Wählen Sie die Kategorie Ihrer Zeitschrift aus der Liste aus."
+
+msgid "plugins.generic.jmef.manager.settings.scholarlyJournal"
+msgstr "Prüfen Sie, ob Ihre Zeitschrift als wissenschaftliche Zeitschrift eingestuft werden könnte."
+
+msgid "plugins.generic.jmef.manager.settings.communityOwned"
+msgstr "Überprüfen Sie, ob Ihre Zeitschrift in Gemeinschaftsbesitz ist.<br /><em>(Ein von DDH definierter Text zur Selbsterklärung bezüglich der Eigentumsverhältnisse wird am Ende der <strong>„Über</strong> uns“-Seite erscheinen.)</em> "
+
+msgid "plugins.generic.jmef.manager.settings.noFees"
+msgstr "Prüfen Sie, ob Ihre Zeitschrift keine Veröffentlichungsgebühren (APCs) erhebt und ob für ihre Inhalte Abonnements erforderlich sind."
+
+msgid "plugins.generic.jmef.manager.settings.reviewType"
+msgstr "Bewertungstyp"
+
+msgid "plugins.generic.jmef.manager.settings.reviewType.description"
+msgstr "Wählen Sie die Art Ihres Überprüfungsverfahrens aus der Liste aus"
+
+msgid "plugins.generic.jmef.diamond.organisationType"
+msgstr "Wählen Sie die Art Ihrer Einrichtung/Organisation aus:"
+
+msgid "plugins.generic.jmef.diamond.organisationType.public"
+msgstr "Öffentlich"
+
+msgid "plugins.generic.jmef.diamond.organisationType.nonProfit"
+msgstr "gemeinnützig"
+
+msgid "plugins.generic.jmeg.about.openToAllAuthors"
+msgstr "<h3>Offen für alle Autor*innen:</h3><p>{$contextTitle} setzt sich für Offenheit und Inklusivität im wissenschaftlichen Verlagswesen ein, ohne dass den Autor*innen Gebühren für das Lesen oder Veröffentlichen entstehen. Wir begrüßen Einreichungen von allen Autor*innen, unabhängig von ihrer institutionellen Zugehörigkeit, ihrem geografischen Standort oder ihrem akademischen Status. Die Einreichungen müssen lediglich mit den Zielen und dem Themenbereich der Zeitschrift übereinstimmen und nach Abschluss des Begutachtungsprozesses die erforderlichen Qualitätsstandards erfüllen.</p>"
+
+msgid "plugins.generic.jmeg.about.communityOwned"
+msgstr "<h3>In gemeinschaftlichem Besitz:</h3><p>{$contextTitle} ist Eigentum von {$publisherInstitution}, einer {$organisationType} Institution/Organisation, die sich der Förderung von Forschung und Wissenschaft verschrieben hat. Die Eigentums- und Leitungsstruktur der Zeitschrift spiegelt ihren Auftrag wider, offenes und barrierefreies wissenschaftliches Publizieren zu unterstützen. Wir bestätigen, dass alle an unserem Betrieb beteiligten kommerziellen Dienstleister sich ausschließlich mit dienstleistungsbezogenen Aspekten des Zeitschriftenverlagswesens befassen. Alle inhaltsbezogenen Aspekte des Verlagswesens, wie Einreichung, Begutachtung, Annahme, Erscheinungshäufigkeit und Themenbereich der Zeitschrift, werden von den Herausgebern bzw. den Eigentümern der Zeitschrift kontrolliert.</p>"
