@@ -1,0 +1,110 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Varga István <vargawebkiado@gmail.com>\n"
+"Language-Team: \n"
+"Language: hu_HU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+msgid "plugins.generic.jmef.displayName"
+msgstr "JMEF XML-generátor"
+
+msgid "plugins.generic.jmef.description"
+msgstr "A bővítmény kiegészíti a folyóirat alapvető metaadatait, hogy lehetővé tegye a Journal Metadata Exchange Format (JMEF) formátumú XML-fájlok létrehozását. A metaadatok a bővítmény aktiválását követően a bővítmény beállításaiban adhatók meg. A generált XML-cím a következő lesz: [folyóirat URL-je]/jmef (pl. https://ojs.yourjournal.com/jmef)"
+
+msgid "plugins.generic.jmef.manager.settings.journalDoi"
+msgstr "A folyóirat DOI-száma"
+
+msgid "plugins.generic.jmef.manager.settings.journalDoi.description"
+msgstr "Írja be a folyóirat DOI-számát 10.xxxx/xxxx formátumban (pl. 10.1234/abcdefgh)"
+
+msgid "plugins.generic.jmef.manager.settings.journalDdh"
+msgstr "A folyóirat DDH-azonosítója"
+
+msgid "plugins.generic.jmef.manager.settings.journalDdh.description"
+msgstr "Ha a folyóirat a DDH-ban szerepel, kérjük, adja meg a DDH-azonosító számát."
+
+msgid "plugins.generic.jmef.manager.settings.journalDoaj"
+msgstr "A folyóirat DOAJ-azonosítója"
+
+msgid "plugins.generic.jmef.manager.settings.journalDoaj.description"
+msgstr "Ha a folyóirat szerepel a DOAJ-ban, kérjük, adja meg a DOAJ-azonosítószámot."
+
+msgid "plugins.generic.jmef.manager.settings.publisherLocation"
+msgstr "A kiadó székhelye"
+
+msgid "plugins.generic.jmef.manager.settings.publisherName"
+msgstr "A beállításokban ezt a kiadónevet adta meg: <strong>{$publisherName}</strong>"
+
+msgid "plugins.generic.jmef.manager.settings.publisherLocation.description"
+msgstr "Válassza ki azt az országot, ahol a kiadó székhelye található."
+
+msgid "plugins.generic.jmef.manager.settings.keywords"
+msgstr "A folyóirat kulcsszavai"
+
+msgid "plugins.generic.jmef.manager.settings.keywords.description"
+msgstr "Írja be a folyóiratot leíró kulcsszavakat, <strong>; jelekkel elválasztva</strong>"
+
+msgid "plugins.generic.jmef.manager.settings.peerReviewUsed"
+msgstr "Ellenőrizze, hogy alkalmaz-e szakértői értékelési eljárást."
+
+msgid "plugins.generic.jmef.manager.settings.openAuthorship"
+msgstr "Ellenőrizze, hogy nyitott-e a szerzői jog.<br /><em>(A DDH által meghatározott, az összes szerző számára nyitott státuszra vonatkozó önbevallási szöveg az <strong>„About”</strong> oldal végén jelenik meg.)</em>"
+
+msgid "plugins.generic.jmef.manager.settings.journalPolicy"
+msgstr "A folyóirat irányelvei"
+
+msgid "plugins.generic.jmef.manager.settings.diamondCategory"
+msgstr "Gyémántkategóriák"
+
+msgid "plugins.generic.jmef.manager.settings.additionalMetadata"
+msgstr "További folyóirat-metadatok"
+
+msgid "plugins.generic.jmef.manager.settings.otherOrganisations"
+msgstr "Egyéb szervezetek"
+
+msgid "plugins.generic.jmef.manager.settings.otherOrganisations.description"
+msgstr "A folyóirat tulajdonosa, amennyiben az eltér a kiadótól, vagy a folyóirattal kapcsolatban álló egyéb szervezetek, <strong>;-jelekkel elválasztva;</strong>"
+
+msgid "plugins.generic.jmef.manager.settings.oecdClassification"
+msgstr "OECD 2007-es osztályozás"
+
+msgid "plugins.generic.jmef.manager.settings.oecdClassification.description"
+msgstr "Válassza ki a folyóirat besorolását a listából."
+
+msgid "plugins.generic.jmef.manager.settings.scholarlyJournal"
+msgstr "Ellenőrizze, hogy folyóirata tudományos folyóiratnak minősül-e."
+
+msgid "plugins.generic.jmef.manager.settings.communityOwned"
+msgstr "Ellenőrizze, hogy a folyóirata közösségi tulajdonban van-e.<br /><em>(A tulajdonjoggal kapcsolatos, a DDH által meghatározott önbevallási szöveg az <strong>„About”</strong> oldal végén jelenik meg.)</em> "
+
+msgid "plugins.generic.jmef.manager.settings.noFees"
+msgstr "Ellenőrizze, hogy a folyóirat nem számít-e fel publikációs díjat (APC), és nincs-e előfizetési díj a tartalmához."
+
+msgid "plugins.generic.jmef.manager.settings.reviewType"
+msgstr "Értékelés típusa"
+
+msgid "plugins.generic.jmef.manager.settings.reviewType.description"
+msgstr "Válassza ki a felülvizsgálati folyamat típusát a listából"
+
+msgid "plugins.generic.jmef.diamond.organisationType"
+msgstr "Válassza ki intézménye/szervezete típusát:"
+
+msgid "plugins.generic.jmef.diamond.organisationType.public"
+msgstr "nyilvános"
+
+msgid "plugins.generic.jmef.diamond.organisationType.nonProfit"
+msgstr "nonprofit"
+
+msgid "plugins.generic.jmeg.about.openToAllAuthors"
+msgstr "<h3>Minden szerző számára nyitott:</h3><p>{$contextTitle} elkötelezett a tudományos publikálás nyitottsága és inkluzivitása mellett, anélkül, hogy a szerzőknek olvasási vagy publikálási díjakat kellene fizetniük. Örömmel fogadjuk minden szerző beküldéseit, függetlenül intézményi hovatartozásuktól, földrajzi elhelyezkedésüktől vagy tudományos státuszuktól. A beküldött anyagoknak csak a folyóirat céljaival és témakörével kell összhangban lenniük, és a lektorálási folyamat befejezése után meg kell felelniük a szükséges minőségi követelményeknek.</p>"
+
+msgid "plugins.generic.jmeg.about.communityOwned"
+msgstr "<h3>Közösségi tulajdonban:</h3><p>{$contextTitle} tulajdonosa a {$publisherInstitution}, egy {$organisationType} intézmény/szervezet, amely a kutatás és a tudomány előmozdítására törekszik. A folyóirat tulajdonosi és irányítási struktúrája tükrözi azt a küldetését, hogy támogassa a nyílt és hozzáférhető tudományos publikálást. Megerősítjük, hogy a működésünkben részt vevő kereskedelmi szolgáltatók kizárólag a folyóirat-kiadás szolgáltatásokkal kapcsolatos vonatkozásaival foglalkoznak. A kiadás minden tartalmi vonatkozását, mint például a beküldést, a lektorálást, az elfogadást, a megjelenés gyakoriságát és a folyóirat témakörét, a szerkesztők / a folyóirat tulajdonosai ellenőrzik.</p>"
+
