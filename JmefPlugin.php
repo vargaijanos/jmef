@@ -1,0 +1,207 @@
+<?php
+
+/**
+ * @file plugins/generic/jmef/JmefPlugin.php
+ *
+ * Copyright (c) 2014-2020 Simon Fraser University
+ * Copyright (c) 2003-2020 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @class JmefPlugin
+ * @ingroup plugins_generic_jmef
+ *
+ * @brief Journal Metadata Exchange Format plugin class
+ */
+namespace APP\plugins\generic\jmef;
+
+use APP\core\Application;
+use PKP\core\JSONMessage;
+use APP\template\TemplateManager;
+use PKP\linkAction\LinkAction;
+use PKP\linkAction\request\AjaxModal;
+use PKP\plugins\GenericPlugin;
+use PKP\plugins\Hook;
+use PKP\core\Registry;
+use PKP\db\DAORegistry;
+use PKP\plugins\PluginRegistry;
+use PKP\facades\Locale;
+
+class JmefPlugin extends GenericPlugin {
+
+    //name of metadata => [type, multilingual];
+    var $_additionalMetadata = array('reviewType' => array('string', false),
+        'journalDOI' => array('string', false),
+        'journalDDH' => array('string', false),
+        'journalDOAJ' => array('string', false),
+        'publisherLocation' => array('string', false),
+        'otherOrganisations' => array('string', false),
+        'scholarlyJournal' => array('boolean', false),
+        'communityOwned' => array('boolean', false),
+        'noFees' => array('boolean', false),
+        'openAuthorship' => array('boolean', false),
+        'journalKeywords' => array('string', true),
+        'oecdClassification' => array('string', false),
+        'organisationType' => array('string', false)
+    );
+    
+    /**
+     * @copydoc Plugin::register()
+     */
+    function register($category, $path, $mainContextId = null) {
+        $success = parent::register($category, $path, $mainContextId);
+        if ($success && $this->getEnabled($mainContextId)) {
+
+            Hook::add('Schema::get::context', [$this, 'addToSchema']);
+            
+            // Intercept the LoadHandler hook to present
+            // jmef when requested.
+            Hook::add('LoadHandler', array($this, 'callbackHandleContent'));
+            
+            //adds the diamond text on the about page
+            Hook::add('TemplateManager::display', array($this, 'addDiamondTexts'));
+        }
+        return $success;
+    }
+
+    /**
+     * Extend the context entity's schema with an aditionals properties
+     */
+    public function addToSchema(string $hookName, array $args) {
+        $schema = $args[0];/** @var stdClass */
+        foreach ($this->_additionalMetadata as $metadata => $settings) {
+            $schema->properties->$metadata = (object) [
+                        'type' => $settings[0],
+                        'apiSummary' => true,
+                        'multilingual' => $settings[1],
+                        'validation' => ['nullable']
+            ];
+        }
+        return false;
+    }
+
+    /**
+     * Declare the handler function to process the actual page 
+     * @param $hookName string The name of the invoked hook
+     * @param $args array Hook parameters
+     * @return boolean Hook handling status
+     */
+    function callbackHandleContent($hookName, $args) {
+        $page = & $args[0];
+        $handler = & $args[3];
+
+        if ($page !== 'jmef') {
+            return Hook::CONTINUE;
+        }
+
+        // OJS/PKP 3.5 no longer supports HANDLER_CLASS.
+        // The LoadHandler hook must provide the handler object directly.
+        $handler = new JmefHandler();
+        return Hook::ABORT;
+    }
+
+    /**
+     * @copydoc Plugin::getDisplayName()
+     */
+    function getDisplayName() {
+        return __('plugins.generic.jmef.displayName');
+    }
+
+    /**
+     * @copydoc Plugin::getDescription()
+     */
+    function getDescription() {
+        return __('plugins.generic.jmef.description');
+    }
+
+    /**
+     * @copydoc Plugin::getActions()
+     */
+    function getActions($request, $verb) {
+        $router = $request->getRouter();
+        return array_merge(
+                $this->getEnabled() ? array(
+            new LinkAction(
+                    'settings',
+                    new AjaxModal(
+                            $router->url($request, null, null, 'manage', null, array('verb' => 'settings', 'plugin' => $this->getName(), 'category' => 'generic')),
+                            $this->getDisplayName()
+                    ),
+                    __('manager.plugins.settings'),
+                    null
+            ),
+                ) : array(),
+                parent::getActions($request, $verb)
+        );
+    }
+    
+    public function addDiamondTexts($hookName, $args) {
+        $templateMgr = $args[0];
+        $template = $args[1];
+
+        if ($template !== "frontend/pages/about.tpl") {
+            return false;
+        }
+
+        $request = Application::get()->getRequest();
+        $context = $request->getContext();
+        if (!$context) {
+            return false;
+        }
+
+        // Get "about" page content
+        $currentContext = $templateMgr->getTemplateVars('currentContext');
+        $currentLocale = Locale::getLocale();
+        
+        if ($currentContext) {
+            $aboutText = $currentContext->getLocalizedSetting('about');
+
+            // Add own text to about context part
+            
+            if ((bool) $context->getData('openAuthorship')){
+                $aboutText .= __('plugins.generic.jmef.about.openToAllAuthors', array('contextTitle' => $currentContext->getLocalizedData('name')));
+            }           
+            if ((bool) $context->getData('communityOwned')){
+                if($context->getData('organisationType')=="nonprofit"){
+                    $organisationType = __('plugins.generic.jmef.diamond.organisationType.nonProfit');
+                } else {
+                    $organisationType = __('plugins.generic.jmef.diamond.organisationType.public');
+                }
+                $aboutText .= __('plugins.generic.jmef.about.communityOwned', array('contextTitle' => $currentContext->getLocalizedData('name'), 'publisherInstitution' => $currentContext->getData('publisherInstitution'), 'organisationType' => $organisationType));
+            }
+            // Content update inside object
+            $currentContext->setData('about', $aboutText, $currentLocale);
+        }
+
+        // Assign whole updated object to template
+        $templateMgr->assign(array(
+            'currentContext' => $currentContext,            
+        ));
+
+        return false;
+    }
+    /**
+     * @copydoc Plugin::manage()
+     */
+    function manage($args, $request) {
+        switch ($request->getUserVar('verb')) {
+            case 'settings':
+                $context = $request->getContext();
+                $templateMgr = TemplateManager::getManager($request);
+                $templateMgr->registerPlugin('function', 'plugin_url', array($this, 'smartyPluginUrl'));
+
+                $form = new JmefSettingsForm($this, $context);
+                if ($request->getUserVar('save')) {
+                    $form->readInputData();
+                    if ($form->validate()) {
+                        $form->execute();
+                        return new JSONMessage(true);
+                    }
+                } else {
+                    $form->initData();
+                }
+                return new JSONMessage(true, $form->fetch($request));
+        }
+        return parent::manage($args, $request);
+    }
+
+}
